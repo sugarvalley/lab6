@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  frontend:
+    image: plavignotte/continuous-curl:latest
+    command: zad6_02:9000/test
+    environment:
+      - LOOP=1
+    ports:
+      - "3000:3000"
+
+  backend:
+    build:
+      context: ./zad
+      network: host
+    container_name: zad6_02
+    ports:
+      - "9000:9000"
